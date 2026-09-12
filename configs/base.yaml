@@ -35,7 +35,7 @@ model:
 
 train:
   batch_size: 64
-  epochs: 15
+  epochs: 30
   lr: 0.001
   weight_decay: 0.0
   clip: 1.0
