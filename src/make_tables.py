@@ -13,6 +13,7 @@ import argparse
 import csv
 import json
 import os
+import pickle
 
 import torch
 
@@ -35,7 +36,7 @@ SPLIT_NAMES = {"uqa_valid": "UQA valid", "wiki_uqa": "Wiki-UQA"}
 def missing(path):
     """Markdown note standing in for an artifact that doesn't exist yet."""
     cmd = PRODUCED_BY.get(os.path.basename(path), "the pipeline step that writes it")
-    return f"*`{path}` not yet generated — run `{cmd}`*"
+    return f"*`{path.replace(os.sep, '/')}` not yet generated — run `{cmd}`*"
 
 
 def load_json(path):
@@ -109,8 +110,10 @@ def table2(ckpt, ckpt_path, log_rows, log_path):
                        if torch.is_tensor(t))
         rows += [
             ["Encoder / decoder type",
-             f"{num(m.get('enc_layers'))}-layer Bi{rnn} / "
-             f"{num(m.get('dec_layers'))}-layer {rnn}"],
+             (
+                 f"{num(m.get('enc_layers'))}-layer Bi{rnn} / "
+                 f"{num(m.get('dec_layers'))}-layer {rnn}"
+             )],
             ["Attention", "Bahdanau (additive), masked at PAD"],
             ["Embedding dim", num(m.get("emb_dim"))],
             ["Hidden dim", num(m.get("hid_dim"))],
@@ -119,8 +122,10 @@ def table2(ckpt, ckpt_path, log_rows, log_path):
             ["Vocabulary", num(ckpt.get("vocab_size"), "{:,}") + " (shared, unigram SentencePiece)"],
             ["Trainable parameters", f"{n_params:,}"],
             ["Optimiser",
-             f"Adam, lr {num(tr.get('lr'))}, ReduceLROnPlateau "
-             f"(x{num(tr.get('lr_factor'))}, patience {num(tr.get('lr_patience'))})"],
+             (
+                 f"Adam, lr {num(tr.get('lr'))}, ReduceLROnPlateau "
+                 f"(x{num(tr.get('lr_factor'))}, patience {num(tr.get('lr_patience'))})"
+             )],
             ["Batch size", num(tr.get("batch_size"))],
         ]
 
@@ -191,7 +196,7 @@ def main():
 
     try:
         ckpt = load_ckpt(args.ckpt)
-    except Exception as e:                      # corrupt or half-written checkpoint
+    except (FileNotFoundError, OSError, EOFError, RuntimeError, pickle.UnpicklingError) as e:
         print(f"could not read {args.ckpt}: {e}")
         ckpt = None
 

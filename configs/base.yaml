@@ -29,7 +29,7 @@ model:
   hid_dim: 512
   enc_layers: 2
   dec_layers: 2
-  dropout: 0.3
+  dropout: 0.4
   attn_dim: 512
   tie_embeddings: false      # shared vocab, but keep untied for clarity in the viva
 
@@ -39,10 +39,10 @@ train:
   lr: 0.001
   weight_decay: 0.0
   clip: 1.0
-  label_smoothing: 0.0
-  lr_patience: 1
+  label_smoothing: 0.1
+  lr_patience: 2
   lr_factor: 0.5
-  early_stop_patience: 3
+  early_stop_patience: 6
   bucket_multiplier: 50      # sort-within-pool bucketing to cut padding
   ckpt_path: checkpoints/best.pt
   log_csv: results/train_log.csv
