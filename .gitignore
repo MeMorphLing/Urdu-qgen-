@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+data/raw/
+data/sp_corpus.txt
+checkpoints/*.pt
+
+# keep the tokenizer and all results in the repo - they are deliverables
+!tokenizer/ur_sp.model
+!tokenizer/ur_sp.vocab
+!results/**

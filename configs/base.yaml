@@ -1,0 +1,55 @@
+seed: 1337
+
+data:
+  hf_dataset: uqa/UQA
+  hf_ood_dataset: uqa/Wiki-UQA
+  train_tsv: data/train.tsv
+  valid_tsv: data/valid.tsv
+  wiki_tsv: data/wiki_test.tsv
+  sp_corpus: data/sp_corpus.txt
+  max_src_words: 60          # Task 1.4
+  max_tgt_words: 25          # Task 1.4
+  max_src_pieces: 128        # safety cap after subword split
+  max_tgt_pieces: 48
+
+tokenizer:
+  model_prefix: tokenizer/ur_sp
+  model_file: tokenizer/ur_sp.model
+  vocab_size: 8000
+  model_type: unigram
+  character_coverage: 1.0
+  pad_id: 0
+  unk_id: 1
+  bos_id: 2
+  eos_id: 3
+
+model:
+  rnn_type: gru              # gru | lstm
+  emb_dim: 256
+  hid_dim: 512
+  enc_layers: 2
+  dec_layers: 2
+  dropout: 0.3
+  attn_dim: 512
+  tie_embeddings: false      # shared vocab, but keep untied for clarity in the viva
+
+train:
+  batch_size: 64
+  epochs: 15
+  lr: 0.001
+  weight_decay: 0.0
+  clip: 1.0
+  label_smoothing: 0.0
+  lr_patience: 1
+  lr_factor: 0.5
+  early_stop_patience: 3
+  bucket_multiplier: 50      # sort-within-pool bucketing to cut padding
+  ckpt_path: checkpoints/best.pt
+  log_csv: results/train_log.csv
+  amp: true
+
+decode:
+  max_len: 40
+  beam_size: 5
+  length_alpha: 0.7          # score = logprob_sum / len**alpha
+  beam_subset: 2000          # beam over a fixed subset (0 = whole split)

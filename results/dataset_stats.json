@@ -1,0 +1,48 @@
+{
+  "train": {
+    "out_path": "data/train.tsv",
+    "raw_rows": 124745,
+    "answerable_rows": 83018,
+    "pairs_after_filter": 74379,
+    "mean_src_len": 32.33,
+    "mean_tgt_len": 11.93,
+    "drop_reasons": {
+      "kept": 74447,
+      "drop_duplicate": 68,
+      "drop_src_too_long": 5967,
+      "drop_offset_mismatch": 1584,
+      "drop_tgt_too_long": 1020,
+      "drop_unanswerable": 41727
+    }
+  },
+  "valid": {
+    "out_path": "data/valid.tsv",
+    "raw_rows": 16824,
+    "answerable_rows": 11169,
+    "pairs_after_filter": 8212,
+    "mean_src_len": 32.94,
+    "mean_tgt_len": 12.32,
+    "drop_reasons": {
+      "kept": 9979,
+      "drop_duplicate": 1767,
+      "drop_unanswerable": 5655,
+      "drop_src_too_long": 845,
+      "drop_tgt_too_long": 160,
+      "drop_offset_mismatch": 185
+    }
+  },
+  "wiki": {
+    "out_path": "data/wiki_test.tsv",
+    "raw_rows": 210,
+    "answerable_rows": 210,
+    "pairs_after_filter": 178,
+    "mean_src_len": 31.61,
+    "mean_tgt_len": 11.41,
+    "drop_reasons": {
+      "kept": 178,
+      "drop_src_too_long": 30,
+      "drop_offset_mismatch": 1,
+      "drop_bad_offset": 1
+    }
+  }
+}
