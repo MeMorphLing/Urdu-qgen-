@@ -1,0 +1,13 @@
+# Theme for the Task 5 front end. Muted teal on warm paper: the accent colour
+# matches the question card border in app/streamlit_app.py, and the off-white
+# background keeps Nastaliq readable, which pure white does not at this weight.
+[theme]
+base = "light"
+primaryColor = "#1f5f5b"
+backgroundColor = "#fbfaf7"
+secondaryBackgroundColor = "#eef1ee"
+textColor = "#1e2b28"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false

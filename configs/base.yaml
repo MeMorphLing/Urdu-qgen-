@@ -24,24 +24,24 @@ tokenizer:
   eos_id: 3
 
 model:
-  rnn_type: gru              # gru | lstm
+  rnn_type: gru              # gru | lstm [lstm To Try]
   emb_dim: 256
   hid_dim: 512
   enc_layers: 2
   dec_layers: 2
-  dropout: 0.4
+  dropout: 0.4              # 0.5 Try this
   attn_dim: 512
   tie_embeddings: false      # shared vocab, but keep untied for clarity in the viva
 
 train:
-  batch_size: 64
-  epochs: 30
-  lr: 0.001
-  weight_decay: 0.0
+  batch_size: 64            # TO TRY: 32, 16, 8
+  epochs: 30                # TO TRY: 40
+  lr: 0.001                 # 2e-3 with warmup
+  weight_decay: 0.0         # 1e-5 [UnTested] for regularization
   clip: 1.0
-  label_smoothing: 0.1
+  label_smoothing: 0.1      # 0.15 to 0.2 for more regularization
   lr_patience: 2
-  lr_factor: 0.5
+  lr_factor: 0.5            # 0.7 Gentle decay
   early_stop_patience: 6
   bucket_multiplier: 50      # sort-within-pool bucketing to cut padding
   ckpt_path: checkpoints/best.pt
@@ -49,7 +49,7 @@ train:
   amp: true
 
 decode:
-  max_len: 40
-  beam_size: 5
-  length_alpha: 0.7          # score = logprob_sum / len**alpha
-  beam_subset: 2000          # beam over a fixed subset (0 = whole split)
+  max_len: 40                # - Not binding, outputs are ~11 words
+  beam_size: 5               # [8, 10] To Try
+  length_alpha: 0.7          # score = logprob_sum / len**alpha  [ try 0.9, 1.0, 1.1 ] 
+  beam_subset: 2000          # beam over a fixed subset [(0 = whole split)]
