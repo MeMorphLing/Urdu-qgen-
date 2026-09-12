@@ -9,13 +9,29 @@
 
 ## Table 2 — Model configuration
 
-*`checkpoints/best.pt` not yet generated — run `python -m src.train --config configs/base.yaml`*
-
-*`results/train_log.csv` not yet generated — run `python -m src.train --config configs/base.yaml`*
+|  |  |
+|---|---|
+| Encoder / decoder type | 2-layer BiGRU / 2-layer GRU |
+| Attention | Bahdanau (additive), masked at PAD |
+| Embedding dim | 256 |
+| Hidden dim | 512 |
+| Attention dim | 512 |
+| Dropout | 0.4 |
+| Vocabulary | 8,000 (shared, unigram SentencePiece) |
+| Trainable parameters | 31,173,440 |
+| Optimiser | Adam, lr 0.001, ReduceLROnPlateau (x0.5, patience 2) |
+| Batch size | 64 |
+| Epochs actually run | 30 |
+| Total wall-clock | 1 h 20 min |
 
 ## Table 3 — Automatic metrics
 
-*`results/metrics.json` not yet generated — run `python -m src.evaluate --config configs/base.yaml`*
+| Split | Decoding | BLEU-4 | ROUGE-L | PPL | `<unk>` % |
+|---|---|---|---|---|---|
+| UQA valid | greedy | 5.35 | 0.2451 | 29.86 | 0.000 |
+| UQA valid | beam (k=5) | 5.36 | 0.2542 | 29.86 | 0.000 |
+| Wiki-UQA | greedy | 3.53 | 0.2197 | 39.71 | 0.000 |
+| Wiki-UQA | beam (k=5) | 4.09 | 0.2312 | 39.71 | 0.000 |
 
 ## Table 4 — Human evaluation
 

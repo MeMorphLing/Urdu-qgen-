@@ -1,0 +1,138 @@
+{
+  "uqa_valid": {
+    "n": 2000,
+    "question_words": {
+      "kis (which/whom)": {
+        "n": 650,
+        "qword_accuracy": 43.8,
+        "mean_sentBLEU": 7.08
+      },
+      "kya (what)": {
+        "n": 586,
+        "qword_accuracy": 53.2,
+        "mean_sentBLEU": 6.55
+      },
+      "kaun (who)": {
+        "n": 316,
+        "qword_accuracy": 31.0,
+        "mean_sentBLEU": 8.28
+      },
+      "kab (when)": {
+        "n": 123,
+        "qword_accuracy": 41.5,
+        "mean_sentBLEU": 9.36
+      },
+      "kitne (how many)": {
+        "n": 88,
+        "qword_accuracy": 67.0,
+        "mean_sentBLEU": 10.58
+      },
+      "kahan (where)": {
+        "n": 56,
+        "qword_accuracy": 23.2,
+        "mean_sentBLEU": 8.94
+      },
+      "other/none": {
+        "n": 47,
+        "qword_accuracy": 4.3,
+        "mean_sentBLEU": 4.64
+      },
+      "kitna (how much)": {
+        "n": 47,
+        "qword_accuracy": 61.7,
+        "mean_sentBLEU": 12.41
+      },
+      "kitni (how much)": {
+        "n": 37,
+        "qword_accuracy": 21.6,
+        "mean_sentBLEU": 10.95
+      },
+      "kyun (why)": {
+        "n": 37,
+        "qword_accuracy": 2.7,
+        "mean_sentBLEU": 5.84
+      },
+      "kaise (how)": {
+        "n": 13,
+        "qword_accuracy": 0.0,
+        "mean_sentBLEU": 3.83
+      }
+    },
+    "beam_vs_greedy": {
+      "beam_better": 835,
+      "beam_worse": 717,
+      "tied": 448,
+      "mean_delta_sentBLEU": 0.677,
+      "mean_len_greedy": 12.21,
+      "mean_len_beam": 10.6
+    },
+    "degenerate": {
+      "copied_source_pct": 0.1,
+      "repetition_pct": 1.1,
+      "empty_pct": 0.0
+    }
+  },
+  "wiki_uqa": {
+    "n": 178,
+    "question_words": {
+      "kis (which/whom)": {
+        "n": 64,
+        "qword_accuracy": 59.4,
+        "mean_sentBLEU": 7.55
+      },
+      "kya (what)": {
+        "n": 51,
+        "qword_accuracy": 56.9,
+        "mean_sentBLEU": 8.47
+      },
+      "kaun (who)": {
+        "n": 21,
+        "qword_accuracy": 28.6,
+        "mean_sentBLEU": 6.59
+      },
+      "kab (when)": {
+        "n": 15,
+        "qword_accuracy": 20.0,
+        "mean_sentBLEU": 4.47
+      },
+      "kahan (where)": {
+        "n": 10,
+        "qword_accuracy": 10.0,
+        "mean_sentBLEU": 4.42
+      },
+      "other/none": {
+        "n": 6,
+        "qword_accuracy": 0.0,
+        "mean_sentBLEU": 2.73
+      },
+      "kitne (how many)": {
+        "n": 5,
+        "qword_accuracy": 80.0,
+        "mean_sentBLEU": 5.14
+      },
+      "kyun (why)": {
+        "n": 5,
+        "qword_accuracy": 20.0,
+        "mean_sentBLEU": 5.49
+      },
+      "kitni (how much)": {
+        "n": 1,
+        "qword_accuracy": 0.0,
+        "mean_sentBLEU": 0.0
+      }
+    },
+    "beam_vs_greedy": {
+      "beam_better": 70,
+      "beam_worse": 61,
+      "tied": 47,
+      "mean_delta_sentBLEU": 0.544,
+      "mean_len_greedy": 10.13,
+      "mean_len_beam": 9.29
+    },
+    "degenerate": {
+      "copied_source_pct": 0.0,
+      "repetition_pct": 0.6,
+      "empty_pct": 0.0
+    }
+  }
+}

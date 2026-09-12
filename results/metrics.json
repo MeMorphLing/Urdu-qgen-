@@ -1,0 +1,42 @@
+{
+  "uqa_valid/greedy": {
+    "BLEU-4": 5.35,
+    "BLEU-4_intl": 6.94,
+    "ROUGE-L": 0.2451,
+    "unk_rate": 0.0,
+    "mean_hyp_len": 12.29,
+    "n": 8212,
+    "PPL": 29.86
+  },
+  "uqa_valid/beam": {
+    "BLEU-4": 5.36,
+    "BLEU-4_intl": 7.03,
+    "ROUGE-L": 0.2542,
+    "unk_rate": 0.0,
+    "mean_hyp_len": 10.6,
+    "n": 2000,
+    "PPL": 29.86,
+    "beam_size": 5,
+    "length_alpha": 0.7
+  },
+  "wiki_uqa/greedy": {
+    "BLEU-4": 3.53,
+    "BLEU-4_intl": 4.48,
+    "ROUGE-L": 0.2197,
+    "unk_rate": 0.0,
+    "mean_hyp_len": 10.13,
+    "n": 178,
+    "PPL": 39.71
+  },
+  "wiki_uqa/beam": {
+    "BLEU-4": 4.09,
+    "BLEU-4_intl": 5.23,
+    "ROUGE-L": 0.2312,
+    "unk_rate": 0.0,
+    "mean_hyp_len": 9.29,
+    "n": 178,
+    "PPL": 39.71,
+    "beam_size": 5,
+    "length_alpha": 0.7
+  }
+}
